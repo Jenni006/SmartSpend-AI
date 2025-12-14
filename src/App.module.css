@@ -109,3 +109,31 @@
   border-color: var(--primary-color);
   color: var(--primary-color);
 }
+
+@media (max-width: 768px) {
+  /* Brand spacing */
+  .navBrand {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .logo {
+    font-size: 1.4rem;
+  }
+
+  .navTitle {
+    font-size: 1.25rem;
+  }
+
+  /* Nav links stack */
+  .navLinks {
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .navLink {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.7rem;
+    border-radius: 6px;
+  }
+}

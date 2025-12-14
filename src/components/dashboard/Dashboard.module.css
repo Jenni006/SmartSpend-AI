@@ -1,0 +1,147 @@
+/* =========================
+   Dashboard Layout
+========================= */
+.dashboard {
+  width: 100%;
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+/* =========================
+   Header
+========================= */
+.header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.title {
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+}
+
+/* =========================
+   Currency Selector
+========================= */
+.currencySelector {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--background-primary);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.currencySelector:hover {
+  border-color: var(--primary-color);
+}
+
+.currencySelector:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* =========================
+   Summary Cards
+========================= */
+.summaryCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.card {
+  padding: var(--spacing-lg);
+  background: var(--background-primary);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.cardLabel {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cardValue {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-xs);
+}
+
+.cardValue.income {
+  color: var(--success-color);
+}
+
+.cardValue.expense {
+  color: var(--error-color);
+}
+
+.cardSubtext {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+}
+
+/* =========================
+   Charts (future-proof)
+========================= */
+.chartsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.chartContainer {
+  background: var(--background-primary);
+  padding: var(--spacing-lg);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+}
+
+/* =========================
+   Responsive
+========================= */
+@media screen and (max-width: 768px) {
+  .dashboard {
+    padding: var(--spacing-md);
+  }
+
+  .summaryCards {
+    grid-template-columns: 1fr;
+  }
+
+  .chartsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .chartContainer {
+    overflow-x: auto;
+  }
+}

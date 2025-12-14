@@ -12,21 +12,21 @@ html {
 
 :root {
   /* Primary (Trust + Intelligence) */
-  --primary-color: #818cf8;        /* Indigo */
+  --primary-color: #818cf8; /* Indigo */
   --primary-color-dark: #6366f1;
   --primary-color-accent: #1e1b4b;
 
   /* Secondary (Growth + Positive) */
-  --secondary-color: #34d399;      /* Emerald */
+  --secondary-color: #34d399; /* Emerald */
   --secondary-color-dark: #10b981;
   --secondary-color-accent: #064e3b;
 
   /* Background */
-  --background-primary: #0f172a;   /* Deep navy */
+  --background-primary: #0f172a; /* Deep navy */
   --background-secondary: #111827;
 
   /* Text */
-  --text-color: #f9fafb;           /* Near white */
+  --text-color: #f9fafb; /* Near white */
   --text-secondary: #d1d5db;
   --text-muted: #9ca3af;
 
@@ -39,7 +39,6 @@ html {
   /* Border & Dividers */
   --border-color: #1f2933;
   --border-light: #374151;
-
 
   /* Spacing (8px base unit) */
   --spacing-xs: 0.25rem;
@@ -98,4 +97,3 @@ html {
   --z-popover: 1060;
   --z-tooltip: 1070;
 }
-
