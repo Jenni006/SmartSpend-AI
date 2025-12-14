@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Rye&display=swap");
 
-
+/* =========================
+   App container
+========================= */
 .app {
   min-height: 100vh;
   background-color: var(--background-secondary);
@@ -8,7 +10,9 @@
   flex-direction: column;
 }
 
-/* Navbar container */
+/* =========================
+   Navbar
+========================= */
 .nav {
   background: var(--background-primary);
   border-bottom: 1px solid var(--border-color);
@@ -17,9 +21,14 @@
   top: 0;
   z-index: var(--z-header);
   backdrop-filter: blur(8px);
+
+  display: flex;
+  flex-direction: column; /* 🔥 vertical layout */
 }
 
-/* Brand section */
+/* =========================
+   Brand section
+========================= */
 .navBrand {
   display: flex;
   align-items: center;
@@ -35,27 +44,68 @@
 
 /* Logo */
 .logo {
-  font-size: 1.45rem;         
+  font-size: 1.6rem;
+  line-height: 1;
   filter: drop-shadow(0 0 6px rgba(129, 140, 248, 0.35));
+  transition: transform 0.2s ease;
 }
 
-
-.navBrand:hover .navLogo {
+.navBrand:hover .logo {
   transform: scale(1.08);
 }
 
 /* Title */
 .navTitle {
   font-family: "Rye", serif;
-  font-size: 1.45rem;     
-  line-height: 1.15;     
+  font-size: 1.45rem;
+  line-height: 1.15;
   font-weight: 400;
-  letter-spacing: 0.3px;  
+  letter-spacing: 0.3px;
   color: var(--text-color);
 }
 
-
-
 .navBrand:hover .navTitle {
+  color: var(--primary-color);
+}
+
+/* =========================
+   Nav links (BELOW title)
+========================= */
+.navLinks {
+  display: flex;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-lg) var(--spacing-md);
+  border-top: 1px solid var(--border-light);
+}
+
+/* =========================
+   Buttons
+========================= */
+.navLink {
+  padding: 0.45rem 0.9rem;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+
+  color: var(--text-secondary);
+  background-color: transparent;
+
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+/* Hover */
+.navLink:hover {
+  background-color: rgba(129, 140, 248, 0.12);
+  color: var(--text-color);
+}
+
+/* Active */
+.navLinkActive {
+  background-color: rgba(129, 140, 248, 0.18);
+  border-color: var(--primary-color);
   color: var(--primary-color);
 }
