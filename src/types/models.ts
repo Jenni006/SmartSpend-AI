@@ -49,7 +49,6 @@ export type AccountType =
   | "cash"
   | "wallet";
 
-
 export type AccountSubType =
   /* Savings */
   | "savings_emergency"
@@ -66,7 +65,6 @@ export type AccountSubType =
   /* Investments */
   | "investment_stocks"
   | "investment_crypto"
-  | "investment_stocks"
   | "investment_mutual_funds"
 
   /* Loans */
