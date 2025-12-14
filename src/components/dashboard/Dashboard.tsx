@@ -1,7 +1,7 @@
 import styles from "./Dashboard.module.css";
 import { useState } from "react";
 
-const currencies=["INR","USD","EUR","GBP","JPY","AUD","CAD","CHF","CNY","SEK","NZD"];
+const currencies=["INR","USD","EUR","GBP","AUD","CAD"];
 
 const Dashboard = () => {
   const [selectedCurrency, setSelectedCurrency] = useState<string>("INR");
