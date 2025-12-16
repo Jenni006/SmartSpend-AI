@@ -124,8 +124,8 @@
 ========================= */
 .chartsGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacing-lg);
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
 }
 
 .chartContainer {
@@ -134,6 +134,20 @@
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.chartTitle {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.chartSubtitle {
+  color: #ffffff; 
+  font-size: 0.8rem;
+  opacity: 0.85; 
+  margin-bottom: var(--spacing-md);
 }
 
 /* =========================
@@ -166,7 +180,7 @@
 ========================= */
 @media screen and (max-width: 1024px) {
   .chartsGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1.2fr 0.8fr;
   }
 }
 

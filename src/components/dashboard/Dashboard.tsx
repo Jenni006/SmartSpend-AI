@@ -1,61 +1,61 @@
 import { useEffect, useState } from "react";
 import { useTransactionsStore } from "../../store/transactionsStore";
 import { useAccountsStore } from "../../store/accountsStore";
-//import { useCategoriesStore } from "../../store/categoriesStore";
-//import CategoryChart, { type CategoryPoint } from "../charts/CategoryChart";
-//import { groupByMonth, groupByCategory } from "../../utils/aggregations";
+import { useCategoriesStore } from "../../store/categoriesStore";
+import CategoryChart, { type CategoryPoint } from "../charts/CategoryChart";
+import { groupByMonth, groupByCategory } from "../../utils/aggregations";
 import styles from "./Dashboard.module.css";
-//import TimeSeriesChart, { type TimePoint } from "../charts/TimeSeriesChart";
+import TimeSeriesChart, { type TimePoint } from "../charts/TimeSeriesChart";
 
 const Dashboard = () => {
-  // const [isHydrated, setIsHydrated] = useState(() => {
-  //   return (
-  //     useTransactionsStore.persist.hasHydrated() &&
-  //     useAccountsStore.persist.hasHydrated() &&
-  //     useCategoriesStore.persist.hasHydrated()
-  //   );
-  // });
+  const [isHydrated, setIsHydrated] = useState(() => {
+    return (
+      useTransactionsStore.persist.hasHydrated() &&
+      useAccountsStore.persist.hasHydrated() &&
+      useCategoriesStore.persist.hasHydrated()
+    );
+  });
 
-  // useEffect(() => {
-  //   const unsubTransactions = useTransactionsStore.persist.onFinishHydration(() => {
-  //     if (
-  //       useTransactionsStore.persist.hasHydrated() &&
-  //       useAccountsStore.persist.hasHydrated() &&
-  //       useCategoriesStore.persist.hasHydrated()
-  //     ) {
-  //       setIsHydrated(true);
-  //     }
-  //   });
-  //   const unsubAccounts = useAccountsStore.persist.onFinishHydration(() => {
-  //     if (
-  //       useTransactionsStore.persist.hasHydrated() &&
-  //       useAccountsStore.persist.hasHydrated() &&
-  //       useCategoriesStore.persist.hasHydrated()
-  //     ) {
-  //       setIsHydrated(true);
-  //     }
-  //   });
-  //   const unsubCategories = useCategoriesStore.persist.onFinishHydration(() => {
-  //     if (
-  //       useTransactionsStore.persist.hasHydrated() &&
-  //       useAccountsStore.persist.hasHydrated() &&
-  //       useCategoriesStore.persist.hasHydrated()
-  //     ) {
-  //       setIsHydrated(true);
-  //     }
-  //   });
-  //   return () => {
-  //     unsubTransactions();
-  //     unsubAccounts();
-  //     unsubCategories();
-  //   };
-  // }, []);
+  useEffect(() => {
+    const unsubTransactions = useTransactionsStore.persist.onFinishHydration(() => {
+      if (
+        useTransactionsStore.persist.hasHydrated() &&
+        useAccountsStore.persist.hasHydrated() &&
+        useCategoriesStore.persist.hasHydrated()
+      ) {
+        setIsHydrated(true);
+      }
+    });
+    const unsubAccounts = useAccountsStore.persist.onFinishHydration(() => {
+      if (
+        useTransactionsStore.persist.hasHydrated() &&
+        useAccountsStore.persist.hasHydrated() &&
+        useCategoriesStore.persist.hasHydrated()
+      ) {
+        setIsHydrated(true);
+      }
+    });
+    const unsubCategories = useCategoriesStore.persist.onFinishHydration(() => {
+      if (
+        useTransactionsStore.persist.hasHydrated() &&
+        useAccountsStore.persist.hasHydrated() &&
+        useCategoriesStore.persist.hasHydrated()
+      ) {
+        setIsHydrated(true);
+      }
+    });
+    return () => {
+      unsubTransactions();
+      unsubAccounts();
+      unsubCategories();
+    };
+  }, []);
 
   const transactions = useTransactionsStore((s) => s.transactions);
   const getActualTransactions = useTransactionsStore((s) => s.getActualTransactions);
   const getProjectedTransactions = useTransactionsStore((s) => s.getProjectedTransactions);
   const currencies = useAccountsStore((s) => s.currencies);
-  //const getCategoryById = useCategoriesStore((s) => s.getCategoryById);
+  const getCategoryById = useCategoriesStore((s) => s.getCategoryById);
 
   const [selectedCurrency, setSelectedCurrency] = useState<string>(() => {
     const actual = getActualTransactions();
@@ -88,53 +88,53 @@ const Dashboard = () => {
   const projectedExpenses = projectedTxs.filter((t) => t.type === "expense");
   const projectedIncome = projectedTxs.filter((t) => t.type === "income");
 
-  // const monthlyData = groupByMonth([
-  //   ...actualExpenses,
-  //   ...projectedExpenses,
-  //   ...actualIncome,
-  //   ...projectedIncome,
-  // ]);
+  const monthlyData = groupByMonth([
+    ...actualExpenses,
+    ...projectedExpenses,
+    ...actualIncome,
+    ...projectedIncome,
+  ]);
 
-  // const expensesActualData: TimePoint[] = monthlyData.map((m) => ({
-  //   time: m.month,
-  //   value: m.actualExpense,
-  // }));
-  // const expensesProjectedData: TimePoint[] = monthlyData.map((m) => ({
-  //   time: m.month,
-  //   value: m.projectedExpense,
-  // }));
-  // const incomeActualData: TimePoint[] = monthlyData.map((m) => ({
-  //   time: m.month,
-  //   value: m.actualIncome,
-  // }));
-  // const incomeProjectedData: TimePoint[] = monthlyData.map((m) => ({
-  //   time: m.month,
-  //   value: m.projectedIncome,
-  // }));
+  const expensesActualData: TimePoint[] = monthlyData.map((m) => ({
+    time: m.month,
+    value: m.actualExpense,
+  }));
+  const expensesProjectedData: TimePoint[] = monthlyData.map((m) => ({
+    time: m.month,
+    value: m.projectedExpense,
+  }));
+  const incomeActualData: TimePoint[] = monthlyData.map((m) => ({
+    time: m.month,
+    value: m.actualIncome,
+  }));
+  const incomeProjectedData: TimePoint[] = monthlyData.map((m) => ({
+    time: m.month,
+    value: m.projectedIncome,
+  }));
 
-  // const categoryData = groupByCategory([...actualExpenses, ...projectedExpenses], {
-  //   type: "expense",
-  // });
+  const categoryData = groupByCategory([...actualExpenses, ...projectedExpenses], {
+    type: "expense",
+  });
 
-  // const getCategoryName = (categoryId: string): string => {
-  //   const category = getCategoryById(categoryId);
-  //   if (!category) return categoryId;
-  //   if (category.parentId) {
-  //     const parent = getCategoryById(category.parentId);
-  //     return parent ? `${parent.name} / ${category.name}` : category.name;
-  //   }
-  //   return category.name;
-  // };
+  const getCategoryName = (categoryId: string): string => {
+    const category = getCategoryById(categoryId);
+    if (!category) return categoryId;
+    if (category.parentId) {
+      const parent = getCategoryById(category.parentId);
+      return parent ? `${parent.name} / ${category.name}` : category.name;
+    }
+    return category.name;
+  };
 
-  // const expenseCategoryData: CategoryPoint[] = categoryData.map((c) => ({
-  //   category: getCategoryName(c.category),
-  //   value: c.actualAmount,
-  // }));
+  const expenseCategoryData: CategoryPoint[] = categoryData.map((c) => ({
+    category: getCategoryName(c.category),
+    value: c.actualAmount,
+  }));
 
-  // const expenseCategoryProjectedData: CategoryPoint[] = categoryData.map((c) => ({
-  //   category: getCategoryName(c.category),
-  //   value: c.projectedAmount,
-  // }));
+  const expenseCategoryProjectedData: CategoryPoint[] = categoryData.map((c) => ({
+    category: getCategoryName(c.category),
+    value: c.projectedAmount,
+  }));
 
   const totalIncome = actualIncome.reduce((sum, t) => sum + t.amount, 0);
   const totalExpenses = actualExpenses.reduce((sum, t) => sum + t.amount, 0);
@@ -145,16 +145,16 @@ const Dashboard = () => {
   const currencySymbol = currency?.symbol ?? "£";
   const formatAmount = (amount: number) => `${currencySymbol}${amount.toFixed(2)}`;
 
-  // if (!isHydrated) {
-  //   return (
-  //     <div className={styles.dashboard}>
-  //       <div className={styles.header}>
-  //         <h1 className={styles.title}>Dashboard</h1>
-  //         <p className={styles.subtitle}>Loading your financial data...</p>
-  //       </div>
-  //     </div>
-  //   );
-  // }
+  if (!isHydrated) {
+    return (
+      <div className={styles.dashboard}>
+        <div className={styles.header}>
+          <h1 className={styles.title}>Dashboard</h1>
+          <p className={styles.subtitle}>Loading your financial data...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.dashboard}>
@@ -207,7 +207,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* <div className={styles.chartsGrid}>
+      <div className={styles.chartsGrid}>
         <div className={styles.chartCard}>
           <h3 className={styles.chartTitle}>Monthly Trends</h3>
           <p className={styles.chartSubtitle}>Income and expenses over time</p>
@@ -232,7 +232,7 @@ const Dashboard = () => {
             />
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
