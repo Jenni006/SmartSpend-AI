@@ -70,47 +70,57 @@
 
 .card {
   padding: var(--spacing-lg);
-  background: var(--background-primary);
-  border-radius: 12px;
-  box-shadow: var(--shadow-md);
-  transition: var(--transition-base);
+  background: linear-gradient(145deg, #111827, #0b1220);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
 }
 
 .cardLabel {
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  color: var(--text-secondary);
-  margin-bottom: var(--spacing-xs);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-xs);
 }
 
 .cardValue {
-  font-size: var(--font-size-2xl);
+  font-size: 2rem;
   font-weight: 700;
+  color: var(--text-color);
   margin-bottom: var(--spacing-xs);
 }
 
+/* Financial Emphasis */
 .cardValue.income {
-  color: var(--success-color);
+  color: #4ade80;
+  text-shadow: 0 0 12px rgba(74, 222, 128, 0.25);
 }
 
 .cardValue.expense {
-  color: var(--error-color);
+  color: #fb7185;
+  text-shadow: 0 0 12px rgba(251, 113, 133, 0.25);
+}
+
+.cardValue.balance {
+  color: #93c5fd;
+  text-shadow: 0 0 12px rgba(147, 197, 253, 0.25);
 }
 
 .cardSubtext {
-  font-size: var(--font-size-xs);
-  color: var(--text-secondary);
+  font-size: 0.75rem;
+  color: var(--text-muted);
 }
 
 /* =========================
-   Charts (future-proof)
+   Charts Section
 ========================= */
 .chartsGrid {
   display: grid;
@@ -119,25 +129,53 @@
 }
 
 .chartContainer {
-  background: var(--background-primary);
+  background: linear-gradient(145deg, #111827, #0b1220);
   padding: var(--spacing-lg);
-  border-radius: 12px;
-  box-shadow: var(--shadow-md);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================
+   Optional Section Header
+========================= */
+.sectionHeader {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+/* =========================
+   Utility States
+========================= */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.emptyState {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  padding: var(--spacing-lg);
 }
 
 /* =========================
    Responsive
 ========================= */
+@media screen and (max-width: 1024px) {
+  .chartsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .dashboard {
     padding: var(--spacing-md);
   }
 
   .summaryCards {
-    grid-template-columns: 1fr;
-  }
-
-  .chartsGrid {
     grid-template-columns: 1fr;
   }
 
